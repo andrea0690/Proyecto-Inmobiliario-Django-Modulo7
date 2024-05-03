@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block 'Contenido' %}
+    <div id="nav_destacados" class="container">
+        <div class="row">
+          <h2 class="text-center mt-3 mb-3" style="font-size: xxx-large;">Bienvenido a Arrienda Facilito.cl</h2> 
+            {% for inm in inmuebles %}
+                <div class="col-12 col-sm-3 py-2">
+                    <div class="card" style="width: 18rem; border-color: black;">
+                        <img  style="height: 12rem;" src="/media/{{inm.imagen}}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{inm.nombre}}</h5>
+                            <p class="card-text">{{inm.descripcion}}</p>
+                            <a href="{% url 'detalle' inm.id %}" class="btn btn-primary" style="background-color: blueviolet; border-color: black;">Ver más</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+
+
