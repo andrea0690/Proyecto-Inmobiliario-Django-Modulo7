@@ -94,6 +94,7 @@ class Inmueble(models.Model):
     cantidad_habitaciones = models.PositiveIntegerField()
     cantidad_banos = models.PositiveIntegerField()
     tipo_de_inmueble=models.CharField(max_length=12, choices=TIPO_INMUEBLE_CHOISES)
+    propietario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     
     def __str__(self) -> str:
         return f"{self.nombre}"

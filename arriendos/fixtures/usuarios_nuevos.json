@@ -1,0 +1,56 @@
+[
+    {
+        "model": "arriendos.usuario",
+        "pk": 6,
+        "fields": {
+            "nombres": "Juan",
+            "apellidos": "Pérez",
+            "rut": "123456789",
+            "direccion": "Calle Falsa 123",
+            "telefono": "912345678",
+            "tipo_usuario": "arrendatario",
+            "correo_electronico": "juan.perez@correo.com"
+        }
+    },
+    {
+        "model": "arriendos.usuario",
+        "pk": 7,
+        "fields": {
+            "nombres": "Ana",
+            "apellidos": "González",
+            "rut": "987654321",
+            "direccion": "Calle Real 456",
+            "telefono": "987654321",
+            "tipo_usuario": "arrendatario",
+            "correo_electronico": "ana.gonzalez@correo.com"
+        }
+    },
+    {
+        "model": "arriendos.usuario",
+        "pk": 8,
+        "fields": {
+            "nombres": "Carlos",
+            "apellidos": "Martínez",
+            "rut": "192837465",
+            "direccion": "Avenida Siempre Viva 742",
+            "telefono": "919283746",
+            "tipo_usuario": "arrendador",
+            "correo_electronico": "carlos.martinez@correo.com"
+        }
+    },
+    {
+        "model": "arriendos.usuario",
+        "pk": 9,
+        "fields": {
+
+            "nombres": "Marcos",
+            "apellidos": "Martínez",
+            "rut": "192837467",
+            "direccion": "Avenida Siempre Viva 742",
+            "telefono": "919283746",
+            "tipo_usuario": "arrendador",
+            "correo_electronico": "marquito.martinez@correo.com"
+        }
+    }
+
+]

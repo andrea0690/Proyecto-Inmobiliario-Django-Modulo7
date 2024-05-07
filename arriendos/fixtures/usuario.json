@@ -1,0 +1,15 @@
+[
+    {
+        "model": "arriendos.usuario",
+        "pk": 5,
+        "fields": {
+            "nombres": "Serena",
+            "apellidos": "Gutierrez",
+            "rut": "272810999",
+            "direccion": "Independencia",
+            "telefono": "930014 166",
+            "tipo_usuario": "arrendador",
+            "correo_electronico": "serenacorreo@correo.cl"
+        }
+    }
+]

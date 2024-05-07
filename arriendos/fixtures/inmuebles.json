@@ -1,0 +1,42 @@
+[
+    {
+        "model": "arriendos.inmueble",
+        "pk": 10,
+        "fields": {
+            "nombre": "Casa2",
+            "direccion": "las condes2",
+            "descripcion": "hermosa casa2",
+            "imagen": "img/inmuebles/casa.jpeg",
+            "precio": "2000000",
+            "comuna": "las_condes",
+            "disponible": true,
+            "m2_construidos": "230.00",
+            "m2_terreno": "230.00",
+            "cantidad_estacionamientos": 4,
+            "cantidad_habitaciones": 5,
+            "cantidad_banos": 4,
+            "tipo_de_inmueble": "casa",
+            "propietario": 5
+        }
+    },
+    {
+        "model": "arriendos.inmueble",
+        "pk": 11,
+        "fields": {
+            "nombre": "Casa exclusiva",
+            "direccion": "las condes",
+            "descripcion": "hermosa casa costosa",
+            "imagen": "img/inmuebles/casa.jpeg",
+            "precio": "2000000",
+            "comuna": "las_condes",
+            "disponible": true,
+            "m2_construidos": "230.00",
+            "m2_terreno": "230.00",
+            "cantidad_estacionamientos": 4,
+            "cantidad_habitaciones": 5,
+            "cantidad_banos": 4,
+            "tipo_de_inmueble": "casa",
+            "propietario": 5
+        }
+    }
+]

@@ -1,0 +1,127 @@
+[
+    {
+        "model": "arriendos.usuario",
+        "pk": 5,
+        "fields": {
+            "nombres": "Serena",
+            "apellidos": "Gutierrez",
+            "rut": "272810999",
+            "direccion": "Independencia",
+            "telefono": "930014 166",
+            "tipo_usuario": "arrendador",
+            "correo_electronico": "serenacorreo@correo.cl"
+        }
+    },
+    {
+        "model": "arriendos.usuario",
+        "pk": 6,
+        "fields": {
+            "nombres": "Juan",
+            "apellidos": "Pérez",
+            "rut": "123456789",
+            "direccion": "Calle Falsa 123",
+            "telefono": "912345678",
+            "tipo_usuario": "arrendatario",
+            "correo_electronico": "juan.perez@correo.com"
+        }
+    },
+    {
+        "model": "arriendos.usuario",
+        "pk": 7,
+        "fields": {
+            "nombres": "Ana",
+            "apellidos": "González",
+            "rut": "987654321",
+            "direccion": "Calle Real 456",
+            "telefono": "987654321",
+            "tipo_usuario": "arrendatario",
+            "correo_electronico": "ana.gonzalez@correo.com"
+        }
+    },
+    {
+        "model": "arriendos.usuario",
+        "pk": 8,
+        "fields": {
+            "nombres": "Carlos",
+            "apellidos": "Martínez",
+            "rut": "192837465",
+            "direccion": "Avenida Siempre Viva 742",
+            "telefono": "919283746",
+            "tipo_usuario": "arrendador",
+            "correo_electronico": "carlos.martinez@correo.com"
+        }
+    },
+    {
+        "model": "arriendos.usuario",
+        "pk": 9,
+        "fields": {
+            "nombres": "Marcos",
+            "apellidos": "Martínez",
+            "rut": "192837467",
+            "direccion": "Avenida Siempre Viva 742",
+            "telefono": "919283746",
+            "tipo_usuario": "arrendador",
+            "correo_electronico": "marquito.martinez@correo.com"
+        }
+    },
+    {
+        "model": "arriendos.inmueble",
+        "pk": 9,
+        "fields": {
+            "nombre": "Casa",
+            "direccion": "las condes",
+            "descripcion": "hermosa casa",
+            "imagen": "img/inmuebles/casa.jpeg",
+            "precio": "2000000",
+            "comuna": "las_condes",
+            "disponible": true,
+            "m2_construidos": "230.00",
+            "m2_terreno": "230.00",
+            "cantidad_estacionamientos": 4,
+            "cantidad_habitaciones": 5,
+            "cantidad_banos": 4,
+            "tipo_de_inmueble": "casa",
+            "propietario": 5
+        }
+    },
+    {
+        "model": "arriendos.inmueble",
+        "pk": 10,
+        "fields": {
+            "nombre": "Casa2",
+            "direccion": "las condes2",
+            "descripcion": "hermosa casa2",
+            "imagen": "img/inmuebles/casa.jpeg",
+            "precio": "2000000",
+            "comuna": "las_condes",
+            "disponible": true,
+            "m2_construidos": "230.00",
+            "m2_terreno": "230.00",
+            "cantidad_estacionamientos": 4,
+            "cantidad_habitaciones": 5,
+            "cantidad_banos": 4,
+            "tipo_de_inmueble": "casa",
+            "propietario": 5
+        }
+    },
+    {
+        "model": "arriendos.inmueble",
+        "pk": 11,
+        "fields": {
+            "nombre": "Casa exclusiva",
+            "direccion": "las condes",
+            "descripcion": "hermosa casa costosa",
+            "imagen": "img/inmuebles/casa.jpeg",
+            "precio": "2000000",
+            "comuna": "las_condes",
+            "disponible": true,
+            "m2_construidos": "230.00",
+            "m2_terreno": "230.00",
+            "cantidad_estacionamientos": 4,
+            "cantidad_habitaciones": 5,
+            "cantidad_banos": 4,
+            "tipo_de_inmueble": "casa",
+            "propietario": 5
+        }
+    }
+]
