@@ -8,7 +8,7 @@
             "descripcion": "hermosa casa2",
             "imagen": "img/inmuebles/casa.jpeg",
             "precio": "2000000",
-            "comuna": "las_condes",
+            "comuna": 103,
             "disponible": true,
             "m2_construidos": "230.00",
             "m2_terreno": "230.00",
@@ -28,7 +28,7 @@
             "descripcion": "hermosa casa costosa",
             "imagen": "img/inmuebles/casa.jpeg",
             "precio": "2000000",
-            "comuna": "las_condes",
+            "comuna": 131,
             "disponible": true,
             "m2_construidos": "230.00",
             "m2_terreno": "230.00",
@@ -36,7 +36,7 @@
             "cantidad_habitaciones": 5,
             "cantidad_banos": 4,
             "tipo_de_inmueble": "casa",
-            "propietario": 5
+            "propietario": 14
         }
     }
 ]
