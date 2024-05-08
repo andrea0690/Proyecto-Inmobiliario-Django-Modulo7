@@ -1,5 +1,5 @@
 from django import forms
-from .models import Usuario
+from .models import SolicitudArriendo, Usuario
 
 class RegistroUsuarioForm(forms.ModelForm):
     class Meta:
@@ -8,3 +8,8 @@ class RegistroUsuarioForm(forms.ModelForm):
         widgets = {
             'password': forms.PasswordInput(),
         }
+
+class SolicitudArriendoForm(forms.ModelForm):
+    class Meta:
+        model = SolicitudArriendo
+        fields = ['inmueble', 'mensaje']

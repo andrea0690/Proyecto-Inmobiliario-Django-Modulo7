@@ -1,0 +1,87 @@
+Region: Arica y Parinacota
+  No hay inmuebles disponibles para arriendo en esta región.
+
+Region: Tarapacá
+  No hay inmuebles disponibles para arriendo en esta región.
+
+Region: Antofagasta
+  No hay inmuebles disponibles para arriendo en esta región.
+
+Region: Atacama
+  No hay inmuebles disponibles para arriendo en esta región.
+
+Region: Coquimbo
+  No hay inmuebles disponibles para arriendo en esta región.
+
+Region: Valparaíso
+  No hay inmuebles disponibles para arriendo en esta región.
+
+Region: Metropolitana de Santiago
+  Inmueble: Casa2
+    Dirección: las condes2
+    Precio: 2000000
+    Descripción: hermosa casa2
+    Tipo de Inmueble: casa
+    Comuna: Las Condes
+    Propietario: Serena Gutierrez
+  Inmueble: Casa exclusiva
+    Dirección: las condes
+    Precio: 2000000
+    Descripción: hermosa casa costosa
+    Tipo de Inmueble: casa
+    Comuna: Santiago
+    Propietario: Marcos Jose
+
+Region: Libertador Gral. Bernardo O’Higgins
+  No hay inmuebles disponibles para arriendo en esta región.
+
+Region: Maule
+  No hay inmuebles disponibles para arriendo en esta región.
+
+Region: Ñuble
+  No hay inmuebles disponibles para arriendo en esta región.
+
+Region: Biobío
+  No hay inmuebles disponibles para arriendo en esta región.
+
+Region: Araucanía
+  Inmueble: Departamento moderno en arriendo
+    Dirección: Calle Francisco Avendaño,sector 1, terreno 4
+    Precio: 2000000
+    Descripción: Hermoso apartamento moderno, 3 habitaciones
+    Tipo de Inmueble: departamento
+    Comuna: Freire
+    Propietario: Marcos Jose
+
+Region: Los Ríos
+  No hay inmuebles disponibles para arriendo en esta región.
+
+Region: Los Lagos
+  Inmueble: Departamento moderno en arriendo
+    Dirección: Calle Vaticano,sector 2, edificio 650, piso 2, dpto 625
+    Precio: 650000
+    Descripción: Hermoso apartamento moderno, 3 habitaciones, 2 baños, balcon
+    Tipo de Inmueble: departamento
+    Comuna: Cochamó
+    Propietario: Marcos Jose
+  Inmueble: Departamento moderno en arriendo
+    Dirección: Calle Florencia,sector 4, edificio 654, piso 4, dpto 626
+    Precio: 600000
+    Descripción: Hermoso apartamento moderno, 3 habitaciones, 1 baño , balcon
+    Tipo de Inmueble: departamento
+    Comuna: Frutillar
+    Propietario: Serena Gutierrez
+  Inmueble: Departamento moderno en arriendo
+    Dirección: Calle Roma,sector 3, edificio 651, piso 3, dpto 626
+    Precio: 600000
+    Descripción: Hermoso apartamento moderno, 3 habitaciones, 1 baño , balcon
+    Tipo de Inmueble: departamento
+    Comuna: Frutillar
+    Propietario: Serena Gutierrez
+
+Region: Aisén del Gral. Carlos Ibáñez del Campo
+  No hay inmuebles disponibles para arriendo en esta región.
+
+Region: Magallanes y de la Antártica Chilena
+  No hay inmuebles disponibles para arriendo en esta región.
+

@@ -1,8 +1,8 @@
 from django.shortcuts import get_object_or_404, render,redirect
 from django.contrib.auth.views import LoginView , LogoutView
 from django.contrib.auth import login
-
-from arriendos.forms import RegistroUsuarioForm
+from django.contrib.auth.decorators import login_required
+from arriendos.forms import RegistroUsuarioForm, SolicitudArriendoForm
 from arriendos.models import Inmueble
 from arriendos.services import borrar_inmueble
 
@@ -14,6 +14,21 @@ def index(request):
 def detalle_inmueble(request, id):
     inmueble = get_object_or_404(Inmueble, pk=id)
     return render(request, 'detalle_inmueble.html', {'inmueble':inmueble})
+
+@login_required
+def solicitud_arriendo(request, id):
+    inmueble = get_object_or_404(Inmueble, pk=id)
+    # if request.user.is_authenticated and request.user.usuario.tipo_usuario == 'arrendatario':
+    if request.method == 'POST':
+        form = SolicitudArriendoForm(request.POST)
+        if form.is_valid():
+            print("Es valido ", form.is_valid())
+            solicitud = form.save(commit=False)
+            solicitud.arrendatario = request.user.usuario
+            solicitud.inmueble = inmueble
+            solicitud.save()
+    
+    return redirect('index')
 
 def eliminar_inmueble(request, id):
 

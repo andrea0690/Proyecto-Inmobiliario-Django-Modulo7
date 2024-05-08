@@ -10,9 +10,9 @@
                         <img  style="height: 12rem;" src="/media/{{inm.imagen}}" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">{{inm.nombre}}</h5>
-                            <p class="card-text">{{inm.descripcion}}</p>
-                            <p class="card-text">{{inm.propietario}}</p>
-                            <p class="card-text">{{inm.comuna}}</p>
+                            <p class="card-text">${{inm.precio}}</p>
+                            <p class="card-text">Region: {{inm.comuna.region}}</p>
+                            <p class="card-text">Comuna: {{inm.comuna}}</p>
                             <a href="{% url 'detalle' inm.id %}" class="btn btn-primary" style="background-color: rgb(73, 176, 118); border-color: black;">Ver más</a>
                         </div>
                     </div>

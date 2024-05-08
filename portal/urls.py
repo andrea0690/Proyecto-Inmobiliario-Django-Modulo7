@@ -11,6 +11,7 @@ urlpatterns = [
     path('registration/', include('django.contrib.auth.urls')),
     path('registrate/', views.registro, name='registrate'),
     path('eliminar_inmueble/<int:id>', views.eliminar_inmueble, name='eliminar_inmueble'),
+    path('solicitud_arriendo/<int:id>', views.solicitud_arriendo, name='solicitud_arriendo'),
 ]
 
 if settings.DEBUG:

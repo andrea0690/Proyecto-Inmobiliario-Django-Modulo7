@@ -1,42 +1,127 @@
-{% extends "base.html" %}
-{% block 'Contenido' %}
+{% extends "base.html" %} {% block 'Contenido' %}
 
 <div id="nav_destacados" class="container">
-    <div class="row">
-        <h2 class=" text-center">{{inmueble.nombre}}</h2>
-        <!-- <img src="{{inmueble.image_url}}" alt=""> -->
-        <div class="col-3 col-sm-3 py-2"></div>
-        <div class="col-6 col-sm-6 py-2 card mb-3 p-5">
-        <img src="/media/{{inmueble.imagen}}" class="card-img-top " alt="..." style="max-height: 450px; max-width: 900px; border-color: blue;" />
-        <div class="card-body">
-            <h5 class="card-title">{{inmueble.nombre}}</h5>
-            <p class="card-text">{{inmueble.descripcion}}.</p>
-            <p class="card-text">{{inmueble.comuna}}</p>
-            <p class="card-text">
-                <small class="text-body-secondary">Precio: ${{inmueble.precio}}</small>
-            </p>
+  <div class="row">
+    <h2 class="text-center">{{inmueble.nombre}}</h2>
+    <!-- <img src="{{inmueble.image_url}}" alt=""> -->
+    <div class="col-3 col-sm-3 py-2"></div>
+    <div class="col-6 col-sm-6 py-2 card mb-3 p-5">
+      <img
+        src="/media/{{inmueble.imagen}}"
+        class="card-img-top"
+        alt="..."
+        style="max-height: 450px; max-width: 900px; border-color: blue"
+      />
+      <div class="card-body">
+        <h5 class="card-title">{{inmueble.nombre}}</h5>
+        <p class="card-text">{{inmueble.descripcion}}.</p>
+        <p class="card-text">{{inmueble.comuna}}</p>
+        <p class="card-text">
+          <small class="text-body-secondary"
+            >Precio: ${{inmueble.precio}}</small
+          >
+        </p>
 
-            <div style="display: flex; justify-content:space-between">
-                <a 
-                    id="add_cart"
-                    href="#"
-                    data-inmueble_id="{{inmueble.id}}"
-                    data-user_id="{{user.id}}"
-                    data-csrf_token="{{csrf_token}}"
-                    class="btn btn-primary"
-                    style="background-color: rgb(72, 165, 49); border-color: black;">Solicitar Arriendo
-                </a>
-    
-                <a href="{% url 'index' %}" class="btn btn-warning">Volver</a>
-                {% if user.is_superuser or user.id == inmueble.propietario.id%}
-                    <a href="{% url 'eliminar_inmueble' inmueble.id %}" class="btn btn-danger">Eliminar</a>
-                {% endif %}
-            </div>
-        </div>
-        </div>
-        <div class="col-3 col-sm-3 py-2"></div>
+        <div style="display: flex; justify-content: space-between">
+          <a
+            id="add_cart"
+            href="#"
+            data-inmueble_id="{{inmueble.id}}"
+            data-user_id="{{user.id}}"
+            data-csrf_token="{{csrf_token}}"
+            class="btn btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+            data-bs-whatever="@mdo"
+            style="background-color: rgb(72, 165, 49); border-color: black"
+            >Solicitar Arriendo
+          </a>
 
+          <a href="{% url 'index' %}" class="btn btn-warning">Volver</a>
+          {% if user.is_superuser or user.id == inmueble.propietario.id%}
+          <a
+            href="{% url 'eliminar_inmueble' inmueble.id %}"
+            class="btn btn-danger"
+            >Eliminar</a
+          >
+          {% endif %}
+        </div>
+      </div>
     </div>
+    <div class="col-3 col-sm-3 py-2"></div>
+  </div>
+</div>
+
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form action="{% url 'solicitud_arriendo' inmueble.id %}" method="post">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Contactar</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <!-- CSRF Token para seguridad -->
+          {% csrf_token %}
+          <div class="mb-3">
+            <spam for="recipient-name" class="col-form-label"
+              >Esta es la información que enviaremos al dueño de esta
+              publicación para que pueda contactarte.</spam
+            >
+          </div>
+          <div class="mb-3">
+            <spam for="recipient-name" class="col-form-label"
+              >Nombre: <b id="recipient-name">{{user.usuario}}</b></spam
+            >
+            <!-- <input type="hidden" name="nombre" value="{{ user.usuario }}" /> -->
+          </div>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label"
+              >Email:
+              <b id="recipient-correo"
+                >{{user.usuario.correo_electronico}}</b
+              ></label
+            >
+            <input
+              type="hidden"
+              name="inmueble"
+              value="{{inmueble.id}}"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label">Mensaje:</label>
+            <textarea
+              class="form-control"
+              id="message-text"
+              name="mensaje"
+              placeholder="Hola, estoy interesado.."
+            ></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Cancelar
+          </button>
+          <button type="submit" class="btn btn-primary">Enviar</button>
+        </div>
+      </form>
+    </div>
+  </div>
 </div>
 
 {% endblock %}

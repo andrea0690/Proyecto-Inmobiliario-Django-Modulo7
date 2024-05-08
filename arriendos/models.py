@@ -14,6 +14,11 @@ class Comuna(models.Model):
     region = models.ForeignKey(Region, related_name='comunas', on_delete=models.CASCADE)
     def __str__(self):
         return self.nombre
+    
+class TipoInmueble(models.Model):
+    tipo = models.CharField(max_length=100)
+    def __str__(self):
+        return self.tipo
 
 
 class Usuario(User):
@@ -35,14 +40,9 @@ class Usuario(User):
         
         
 class Inmueble(models.Model):
-    TIPO_INMUEBLE_CHOISES = [
-        ('casa','Casa'),
-        ('departamento','Departamento'),
-        ('parcela','Parcela'),
-    ]
     nombre=models.CharField(max_length=50)
-    direccion=models.CharField(max_length=50)
-    descripcion=models.CharField(max_length=50)
+    direccion=models.CharField(max_length=300)
+    descripcion=models.CharField(max_length=300)
     imagen = models.ImageField(upload_to='img/inmuebles/')
     precio=models.DecimalField(max_digits=10, decimal_places=0)
     comuna = models.ForeignKey(Comuna, related_name='inmuebles', on_delete=models.CASCADE)
@@ -52,7 +52,7 @@ class Inmueble(models.Model):
     cantidad_estacionamientos = models.PositiveIntegerField()
     cantidad_habitaciones = models.PositiveIntegerField()
     cantidad_banos = models.PositiveIntegerField()
-    tipo_de_inmueble=models.CharField(max_length=12, choices=TIPO_INMUEBLE_CHOISES)
+    tipo_de_inmueble = models.ForeignKey(TipoInmueble, related_name='inmuebles', on_delete=models.CASCADE)
     propietario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     
     def __str__(self) -> str:

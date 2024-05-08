@@ -1,0 +1,144 @@
+[
+    {
+        "model": "arriendos.inmueble",
+        "pk": 10,
+        "fields": {
+            "nombre": "Hermosa casa en arriendo",
+            "direccion": "Calle Venezia,sector 1, terreno 4",
+            "descripcion": "Hermosa casa amplia, 4 habitaciones, 5 baños, garaje, piscina,lavanderia",
+            "imagen": "img/inmuebles/casa_venezia.jpeg",
+            "precio": "9000000",
+            "comuna": 103,
+            "disponible": true,
+            "m2_construidos": "230.00",
+            "m2_terreno": "230.00",
+            "cantidad_estacionamientos": 4,
+            "cantidad_habitaciones": 4,
+            "cantidad_banos": 4,
+            "tipo_de_inmueble": 1,
+            "propietario": 5
+        }
+    },
+    {
+        "model": "arriendos.inmueble",
+        "pk": 11,
+        "fields": {
+            "nombre": "Casa exclusiva en arriendo",
+            "direccion": "Calle Napoli,sector 1, terreno 5",
+            "descripcion": "Hermosa casa amplia, 5 habitaciones, 5 baños, garaje, piscina,lavanderia, cine",
+            "imagen": "img/inmuebles/casa_napoli.jpeg",
+            "precio": "10000000",
+            "comuna": 131,
+            "disponible": true,
+            "m2_construidos": "230.00",
+            "m2_terreno": "230.00",
+            "cantidad_estacionamientos": 4,
+            "cantidad_habitaciones": 5,
+            "cantidad_banos": 5,
+            "tipo_de_inmueble": 1,
+            "propietario": 14
+        }
+    },
+    {
+        "model": "arriendos.inmueble",
+        "pk": 11,
+        "fields": {
+            "nombre": "Casa exclusiva en arriendo",
+            "direccion": "Calle Milan,sector 1, terreno 5",
+            "descripcion": "Hermosa casa amplia, 6 habitaciones, 5 baños, garaje, piscina,lavanderia, cine",
+            "imagen": "img/inmuebles/casa_milan.jpeg",
+            "precio": "10000000",
+            "comuna": 131,
+            "disponible": true,
+            "m2_construidos": "230.00",
+            "m2_terreno": "230.00",
+            "cantidad_estacionamientos": 4,
+            "cantidad_habitaciones": 6,
+            "cantidad_banos": 5,
+            "tipo_de_inmueble": 1,
+            "propietario": 14
+        }
+    },
+    {
+        "model": "arriendos.inmueble",
+        "pk": 12,
+        "fields": {
+            "nombre": "Departamento moderno en arriendo",
+            "direccion": "Calle Francisco Avendaño,sector 1, terreno 4",
+            "descripcion": "Hermoso apartamento moderno, 3 habitaciones",
+            "imagen": "img/inmuebles/departamento_moderno.jpeg",
+            "precio": "2000000",
+            "comuna": 260,
+            "disponible": true,
+            "m2_construidos": "230.00",
+            "m2_terreno": "230.00",
+            "cantidad_estacionamientos": 4,
+            "cantidad_habitaciones": 5,
+            "cantidad_banos": 4,
+            "tipo_de_inmueble": 2,
+            "propietario": 14
+        }
+    },
+    {
+        "model": "arriendos.inmueble",
+        "pk": 13,
+        "fields": {
+            "nombre": "Departamento moderno en arriendo",
+            "direccion": "Calle Vaticano,sector 2, edificio 650, piso 2, dpto 625",
+            "descripcion": "Hermoso apartamento moderno, 3 habitaciones, 2 baños, balcon",
+            "imagen": "img/inmuebles/departamento_vaticano.jpeg",
+            "precio": "650000",
+            "comuna": 301,
+            "disponible": true,
+            "m2_construidos": "230.00",
+            "m2_terreno": "230.00",
+            "cantidad_estacionamientos": 4,
+            "cantidad_habitaciones": 5,
+            "cantidad_banos": 4,
+            "tipo_de_inmueble": 2,
+            "propietario": 14
+        }
+    },
+    {
+        "model": "arriendos.inmueble",
+        "pk": 14,
+        "fields": {
+            "nombre": "Departamento moderno en arriendo",
+            "direccion": "Calle Roma,sector 3, edificio 651, piso 3, dpto 626",
+            "descripcion": "Hermoso apartamento moderno, 3 habitaciones, 1 baño , balcon",
+            "imagen": "img/inmuebles/departamento_roma.jpeg",
+            "precio": "600000",
+            "comuna": 305,
+            "disponible": true,
+            "m2_construidos": "230.00",
+            "m2_terreno": "230.00",
+            "cantidad_estacionamientos": 4,
+            "cantidad_habitaciones": 5,
+            "cantidad_banos": 4,
+            "tipo_de_inmueble": 2,
+            "propietario": 5
+        }
+    },
+    {
+        "model": "arriendos.inmueble",
+        "pk": 15,
+        "fields": {
+            "nombre": "Departamento moderno en arriendo",
+            "direccion": "Calle Florencia,sector 4, edificio 654, piso 4, dpto 626",
+            "descripcion": "Hermoso apartamento moderno, 3 habitaciones, 1 baño , balcon",
+            "imagen": "img/inmuebles/departamento_florencia.jpeg",
+            "precio": "600000",
+            "comuna": 305,
+            "disponible": true,
+            "m2_construidos": "230.00",
+            "m2_terreno": "230.00",
+            "cantidad_estacionamientos": 4,
+            "cantidad_habitaciones": 5,
+            "cantidad_banos": 4,
+            "tipo_de_inmueble": 2,
+            "propietario": 5
+        }
+    }
+
+
+]
