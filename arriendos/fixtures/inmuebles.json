@@ -138,7 +138,68 @@
             "tipo_de_inmueble": 2,
             "propietario": 5
         }
+    },
+    {
+        "model": "arriendos.inmueble",
+        "pk": 16,
+        "fields": {
+            "nombre": "Departamento moderno en la playa en arriendo",
+            "direccion": "Calle Florencia,sector 4, edificio 654, piso 4, dpto 626",
+            "descripcion": "Hermoso apartamento moderno, 3 habitaciones, 2 baños , balcon",
+            "imagen": "img/inmuebles/departamento-florencia2.webp",
+            "precio": "600000",
+            "comuna": 213,
+            "disponible": true,
+            "m2_construidos": "230.00",
+            "m2_terreno": "230.00",
+            "cantidad_estacionamientos": 4,
+            "cantidad_habitaciones": 5,
+            "cantidad_banos": 4,
+            "tipo_de_inmueble": 2,
+            "propietario": 15
+        }
+    },
+    {
+        "model": "arriendos.inmueble",
+        "pk": 17,
+        "fields": {
+            "nombre": "Lujosa mansion moderna en arriendo",
+            "direccion": "Calle Capri,sector 4, edificio 654, piso 4, dpto 626",
+            "descripcion": "Hermosa casa moderna, 3 habitaciones, 5 baños , balcon",
+            "imagen": "img/inmuebles/casa_capri.jpeg",
+            "precio": "600000",
+            "comuna": 332,
+            "disponible": true,
+            "m2_construidos": "230.00",
+            "m2_terreno": "230.00",
+            "cantidad_estacionamientos": 4,
+            "cantidad_habitaciones": 5,
+            "cantidad_banos": 4,
+            "tipo_de_inmueble": 2,
+            "propietario": 15
+        }
+    },
+    {
+        "model": "arriendos.inmueble",
+        "pk": 18,
+        "fields": {
+            "nombre": "Lujosa mansion moderna en arriendo",
+            "direccion": "Calle Amalfi,sector 4, edificio 654, piso 4, dpto 626",
+            "descripcion": "Hermosa casa moderna, 3 habitaciones, 5 baños , balcon",
+            "imagen": "img/inmuebles/casa-amalfi.jpeg",
+            "precio": "600000",
+            "comuna": 346,
+            "disponible": true,
+            "m2_construidos": "230.00",
+            "m2_terreno": "230.00",
+            "cantidad_estacionamientos": 4,
+            "cantidad_habitaciones": 5,
+            "cantidad_banos": 4,
+            "tipo_de_inmueble": 2,
+            "propietario": 15
+        }
     }
+
 
 
 ]

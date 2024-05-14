@@ -19,7 +19,7 @@
         <p class="card-text">Precio: ${{inmueble.precio}}</p>
 
         <div style="display: flex; justify-content: space-between">
-          {% if user.is_authenticated and user.id != inmueble.propietario.id %}
+          {% if user.is_authenticated and user.id != inmueble.propietario.id and user.usuario.tipo_usuario == 'arrendatario' %}
           <a
           id="add_cart"
           href="#"
@@ -30,19 +30,12 @@
           data-bs-toggle="modal"
           data-bs-target="#exampleModal"
           data-bs-whatever="@mdo"
-          style="background-color: rgb(72, 165, 49); border-color: black;{% if not inmueble.disponible %} pointer-events: none; opacity: 0.6; {% endif %}"
+          style="background-color: rgb(73, 176, 118); border-color: black; {% if not inmueble.disponible %} pointer-events: none; opacity: 0.6; {% endif %}"
           >Solicitar Arriendo
         </a>
           {% endif %}
 
-          <a href="{% url 'index' %}" class="btn btn-warning">Volver</a>
-          {% if user.is_superuser or user.id == inmueble.propietario.id%}
-          <a
-            href="{% url 'eliminar_inmueble' inmueble.id %}"
-            class="btn btn-danger"
-            >Eliminar</a
-          >
-          {% endif %}
+          <a href="{% url 'index' %}" class="btn btn-primary" style="background-color: rgb(83, 139, 187); border-color: black;">Volver</a>
         </div>
       </div>
     </div>

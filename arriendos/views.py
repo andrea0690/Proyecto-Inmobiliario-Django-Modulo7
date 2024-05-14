@@ -39,7 +39,6 @@ def solicitud_arriendo(request, id):
     if request.method == 'POST':
         form = SolicitudArriendoForm(request.POST)
         if form.is_valid():
-            print("Es valido ", form.is_valid())
             solicitud = form.save(commit=False)
             solicitud.arrendatario = request.user.usuario
             solicitud.inmueble = inmueble
@@ -53,7 +52,7 @@ def solicitud_arriendo(request, id):
 def eliminar_inmueble(request, id):
     borrado = borrar_inmueble(request.user, id)
     if borrado:
-        return redirect('index')
+        return redirect('dashboard', estado = 0)
     else:
         print("NO SE BORRO")
         return redirect('error_500')
@@ -80,7 +79,7 @@ def crear_inmueble(request):
             inmueble = form.save(commit=False)
             inmueble.propietario = request.user.usuario
             inmueble.save()
-            return redirect('dashboard') 
+            return redirect('dashboard', estado = 0) 
     else:
         form = RegistroInmuebleForm()
     return render(request, 'registro_inmueble.html', {'form': form})
@@ -92,7 +91,7 @@ def actualizar_inmueble(request, id):
         form = RegistroInmuebleForm(request.POST, request.FILES, instance=inmueble)
         if form.is_valid():
             form.save()
-            return redirect('dashboard')
+            return redirect('dashboard', estado = 0)
     else:
         form = RegistroInmuebleForm(instance=inmueble)
         

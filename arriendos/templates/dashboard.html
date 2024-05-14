@@ -21,14 +21,16 @@
                 role="menu"
                 data-accordion="false"
                 >
-                <li class="nav-item">
-                    <a href="{% url 'dashboard' 0 %}" class="nav-link">
-                        <i class="nav-icon fas fa-th"></i>
-                        <p>
-                            Mis Inmuebles
-                        </p>
-                    </a>
-                </li>
+                {% if user.usuario.tipo_usuario != 'arrendatario' %}
+                    <li class="nav-item">
+                        <a href="{% url 'dashboard' 0 %}" class="nav-link">
+                            <i class="nav-icon fas fa-th"></i>
+                            <p>
+                                Mis Inmuebles
+                            </p>
+                        </a>
+                    </li>
+                {% endif %}
                 <li class="nav-item">
                     <a href="{% url 'actualizar_datos' %}" class="nav-link actualizar-datos-link">
                         <i class="nav-icon fas fa-th"></i>
@@ -45,14 +47,17 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="{% url 'crear_inmueble' %}" class="nav-link crear-inmueble-link">
-                        <i class="nav-icon fas fa-th"></i>
-                        <p>
-                            Crear Inmueble
-                        </p>
-                    </a>
-                </li>
+                {% if user.usuario.tipo_usuario != 'arrendatario' %}
+                    <li class="nav-item">
+                        <a href="{% url 'crear_inmueble' %}" class="nav-link crear-inmueble-link">
+                            <i class="nav-icon fas fa-th"></i>
+                            <p>
+                                Crear Inmueble
+                            </p>
+                        </a>
+                    </li>
+                {% endif %}
+
                 <li class="nav-item">
                     <a href="{% url 'logout' %}" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
@@ -80,12 +85,23 @@
                                             <a href="{% url 'actualizar_inmueble' inm.id %}">
                                                 <img  style="height: 12rem;" src="/media/{{inm.imagen}}" class="card-img-top" alt="...">
                                             </a>
-                                            <div class="card-body">
+                                            <div class="card-body" >
                                                 <h5 class="card-title">{{inm.nombre}}</h5>
                                                 <p class="card-text">${{inm.precio}}</p>
                                                 <p class="card-text">Region: {{inm.comuna.region}}</p>
                                                 <p class="card-text">Comuna: {{inm.comuna}}</p>
-                                                <a href="{% url 'actualizar_inmueble' inm.id %}" class="btn btn-primary editar-inmueble-link" style="background-color: rgb(73, 176, 118); border-color: black;">Editar</a>
+
+                                                <div style="display: flex; justify-content: space-between">
+                                                    <a href="{% url 'actualizar_inmueble' inm.id %}" class="btn btn-primary editar-inmueble-link" style="background-color: rgb(83, 139, 187); border-color: black;">Editar</a>
+                                                    {% if user.is_superuser or user.id == inm.propietario.id%}
+                                                    <a
+                                                      href="{% url 'eliminar_inmueble' inm.id %}"
+                                                      class="btn btn-danger"
+                                                      >Eliminar</a
+                                                    >
+                                                    {% endif %}
+                                                </div>
+
                                             </div>
                                         </div>
                                     </div>
@@ -108,7 +124,8 @@
         $(document).ready(function() {
 
             const estado = {{ estado|default:0 }};
-            if (estado === 1) {
+            const tipo_usuario = "{{ user.usuario.tipo_usuario }}";
+            if (estado === 1 || tipo_usuario === "arrendatario") {
                 url = $(".mis-solicitudes-link").attr('href')
                 llamar_a_view(url)
             }
