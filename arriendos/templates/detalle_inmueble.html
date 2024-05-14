@@ -2,7 +2,7 @@
 
 <div id="nav_destacados" class="container">
   <div class="row">
-    <h2 class="text-center">{{inmueble.nombre}}</h2>
+    <h2 class="text-center pt-3">{{inmueble.nombre}}</h2>
     <!-- <img src="{{inmueble.image_url}}" alt=""> -->
     <div class="col-3 col-sm-3 py-2"></div>
     <div class="col-6 col-sm-6 py-2 card mb-3 p-5">
@@ -13,29 +13,27 @@
         style="max-height: 450px; max-width: 900px; border-color: blue"
       />
       <div class="card-body">
-        <h5 class="card-title">{{inmueble.nombre}}</h5>
-        <p class="card-text">{{inmueble.descripcion}}.</p>
+        <p class="card-title"><b>{{inmueble.nombre}}</b></p>
+        <p class="card-text">{{inmueble.descripcion}}</p>
         <p class="card-text">{{inmueble.comuna}}</p>
-        <p class="card-text">
-          <small class="text-body-secondary"
-            >Precio: ${{inmueble.precio}}</small
-          >
-        </p>
+        <p class="card-text">Precio: ${{inmueble.precio}}</p>
 
         <div style="display: flex; justify-content: space-between">
+          {% if user.is_authenticated and user.id != inmueble.propietario.id %}
           <a
-            id="add_cart"
-            href="#"
-            data-inmueble_id="{{inmueble.id}}"
-            data-user_id="{{user.id}}"
-            data-csrf_token="{{csrf_token}}"
-            class="btn btn-primary"
-            data-bs-toggle="modal"
-            data-bs-target="#exampleModal"
-            data-bs-whatever="@mdo"
-            style="background-color: rgb(72, 165, 49); border-color: black"
-            >Solicitar Arriendo
-          </a>
+          id="add_cart"
+          href="#"
+          data-inmueble_id="{{inmueble.id}}"
+          data-user_id="{{user.id}}"
+          data-csrf_token="{{csrf_token}}"
+          class="btn btn-primary"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+          data-bs-whatever="@mdo"
+          style="background-color: rgb(72, 165, 49); border-color: black;{% if not inmueble.disponible %} pointer-events: none; opacity: 0.6; {% endif %}"
+          >Solicitar Arriendo
+        </a>
+          {% endif %}
 
           <a href="{% url 'index' %}" class="btn btn-warning">Volver</a>
           {% if user.is_superuser or user.id == inmueble.propietario.id%}

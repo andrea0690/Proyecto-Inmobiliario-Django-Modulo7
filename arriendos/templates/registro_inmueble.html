@@ -1,0 +1,26 @@
+
+{% block 'Contenido' %}
+  <div class="container">
+    <div class="row">
+      <div class="p-2 text-center">
+        <h2>Registro de nuevo inmueble</h2>
+        <form action="{% url 'crear_inmueble' %}" method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          {% for field in form %}
+            <div class="form-group row">
+              <label class="col-sm-2 col-form-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+              <div class="col-sm-10">
+                {{ field }}
+                {% for error in field.errors %}
+                  <div class="text-danger">{{ error }}</div>
+                {% endfor %}
+              </div>
+            </div>
+          {% endfor %}
+          <a class="btn btn-warning" href='{% url "dashboard" 0 %}'>Volver</a>
+          <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}

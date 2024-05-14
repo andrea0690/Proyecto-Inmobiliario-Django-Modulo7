@@ -1,0 +1,364 @@
+{% extends 'base.html' %}
+
+{% block 'slider' %}{% endblock %}
+{% block 'Header' %}{% endblock %}
+{% block 'Navbar' %}{% endblock %}
+
+{% block 'Contenido' %}
+    <div class="card card-primary card-outline">
+        <div class="card-body">
+        <h4 class="text-primary">
+            {% if is_arrendador %}
+                Solicitudes Recibidas {{estado}}
+            {%else%}
+                Solicitudes Realizadas
+            {%endif%}
+        </h4>
+        <ul class="nav nav-tabs" id="custom-content-below-tab" role="tablist">
+            <li class="nav-item">
+            <a class="nav-link active" id="custom-content-below-home-tab" data-toggle="pill" href="#custom-content-below-home" role="tab" aria-controls="custom-content-below-home" aria-selected="true"><b>Pendientes</b></a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link text-color" id="custom-content-below-profile-tab" data-toggle="pill" href="#custom-content-below-profile" role="tab" aria-controls="custom-content-below-profile" aria-selected="false"><b>Aceptadas</b></a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" id="custom-content-below-messages-tab" data-toggle="pill" href="#custom-content-below-messages" role="tab" aria-controls="custom-content-below-messages" aria-selected="false"><b>Rechazadas</b></a>
+            </li>
+        </ul>
+        <div class="tab-content" id="custom-content-below-tabContent">
+            <div class="tab-pane fade show active" id="custom-content-below-home" role="tabpanel" aria-labelledby="custom-content-below-home-tab"><br>
+                <div class="card card-solid">
+                    <div class="card-body pb-0">
+                    <div class="row">
+                        <!-- <div class="card-header border-0">
+                        <h4>Solicitudes de arriendo</h4>
+                        <div class="card-tools">
+                            <a href="#" class="btn btn-tool btn-sm">
+                            <i class="fas fa-download"></i>
+                            </a>
+                            <a href="#" class="btn btn-tool btn-sm">
+                            <i class="fas fa-bars"></i>
+                            </a>
+                        </div>
+                        </div> -->
+                        {% for sol in interesados%}
+                            {%if sol.estado == 'pendiente' %}
+                                <div
+                                    class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column"
+                                >
+                                    <div class="card bg-light d-flex flex-fill">
+                                    <div class="card-header text-muted border-bottom-0">
+                                        Arrendatario: {{sol.arrendatario}}
+                                    </div>
+                                    <div class="card-body pt-0">
+                                        <div class="row">
+                                        <div class="col-7">
+                                            <h2 class="lead"><b>{{sol.inmueble.nombre}}</b></h2>
+                                            <p class="text-muted text-sm">
+                                            <b>Descripcion: </b>{{sol.inmueble.descripcion}}
+                                            </p>
+                                            <p class="text-muted text-sm">
+                                            <b>Ubicacion: </b>{{sol.inmueble.comuna}}
+                                            </p>
+                                            <ul class="ml-4 mb-0 fa-ul text-muted">
+                                            <!-- <li class="small"><span class="fa-li"><i class="fas fa-lg fa-letter"></i></span> Address: Demo Street 123, Demo City 04312, NJ</li> -->
+                                            <li class="small">
+                                                <span class="fa-li"
+                                                ><i class="fas fa-lg fa-phone"></i
+                                                ></span>
+                                                Telefono #: {{sol.arrendatario.telefono}}
+                                            </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-5 text-center">
+                                            <a href="{% url 'detalle' sol.inmueble.id %}">
+                                            <img
+                                                src="/media/{{sol.inmueble.imagen}}"
+                                                alt="user-avatar"
+                                                class="img-circle img-fluid"
+                                            />
+                                            </a>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <div class="text-right">
+                                        <a href="#" class="btn btn-sm bg-teal">
+                                            <i class="fas fa-comments"></i>
+                                        </a>
+                                        <a
+                                            href="#"
+                                            class="btn btn-sm btn-primary"
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#exampleModal2"
+                                            data-id="{{sol.id}}"
+                                            data-mensaje="{{sol.mensaje}}"
+                                            data-nombre="{{sol.arrendatario}}"
+                                            data-email="{{sol.arrendatario.correo_electronico}}"
+                                            id="acep_solicitud"
+                                        >
+                                            <i class="fas fa-user"></i>Ver solicitud
+                                        </a>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            {%endif%}
+                        {%endfor%}
+                    </div>
+                    </div>
+                    <!-- /.card-body -->
+                    <div class="card-footer">
+                    <nav aria-label="Contacts Page Navigation">
+                        <ul class="pagination justify-content-center m-0">
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">4</a></li>
+                        <li class="page-item"><a class="page-link" href="#">5</a></li>
+                        <li class="page-item"><a class="page-link" href="#">6</a></li>
+                        <li class="page-item"><a class="page-link" href="#">7</a></li>
+                        <li class="page-item"><a class="page-link" href="#">8</a></li>
+                        </ul>
+                    </nav>
+                    </div>
+                    <!-- /.card-footer -->
+                </div>
+            </div>
+            <div class="tab-pane fade" id="custom-content-below-profile" role="tabpanel" aria-labelledby="custom-content-below-profile-tab"><br>
+
+                <div class="content">
+                    <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <!-- <div class="card-header border-0">
+                                <h3 class="card-title">Solicitudes de arriendo</h3>
+                                    <div class="card-tools">
+                                        <a href="#" class="btn btn-tool btn-sm">
+                                        <i class="fas fa-download"></i>
+                                        </a>
+                                        <a href="#" class="btn btn-tool btn-sm">
+                                        <i class="fas fa-bars"></i>
+                                        </a>
+                                    </div>
+                                </div> -->
+                                <div class="card-body table-responsive p-0">
+                                <table class="table table-striped table-valign-middle">
+                                    <thead>
+                                    <tr>
+                                        <th>Arrendatario</th>
+                                        {% if not is_arrendador %}
+                                            <th>Propietario</th>
+                                            <th>Tlf Propietario</th>
+                                        {%endif%}
+                                        <th>Inmueble</th>
+                                        <th>Estado</th>
+                                        <th>Mensaje</th>
+                                        <th>Más inf</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for sol in interesados%}
+                                            {%if sol.estado == 'aceptada' %}
+                                                <tr>
+                                                    <td>
+                                                    <img
+                                                        src="../static/img/user3-128x128.jpg"
+                                                        alt="Product 1"
+                                                        class="img-circle img-size-32 mr-2"
+                                                    />
+                                                    {{sol.arrendatario}}
+                                                    </td>
+                                                    {% if not is_arrendador%}
+                                                        <td>{{sol.inmueble.propietario}}</td>
+                                                        <td>{{sol.inmueble.propietario.telefono}}</td>
+                                                    {%endif%}
+                                                    <td>{{sol.inmueble}}</td>
+                                                    <td>{{sol.estado}}</td>
+                                                    <td>
+                                                    {{sol.mensaje}}
+                                                    </td>
+                                                    <td>
+                                                    <a href="#" class="text-muted">
+                                                        <i class="fas fa-search"></i>
+                                                    </a>
+                                                    </td>
+                                                </tr>
+                                            {%endif%}
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="tab-pane fade" id="custom-content-below-messages" role="tabpanel" aria-labelledby="custom-content-below-messages-tab"><br>
+
+                <div class="content">
+                    <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12">
+                        <div class="card">
+                            <!-- <div class="card-header border-0">
+                                <h3 class="card-title">Solicitudes de arriendo</h3>
+                                <div class="card-tools">
+                                    <a href="#" class="btn btn-tool btn-sm">
+                                    <i class="fas fa-download"></i>
+                                    </a>
+                                    <a href="#" class="btn btn-tool btn-sm">
+                                    <i class="fas fa-bars"></i>
+                                    </a>
+                                </div>
+                            </div> -->
+                            <div class="card-body table-responsive p-0">
+                            <table class="table table-striped table-valign-middle">
+                                <thead>
+                                <tr>
+                                    <th>Arrendatario</th>
+                                    <th>Inmueble</th>
+                                    <th>Estado</th>
+                                    <th>Mensaje</th>
+                                    <th>Más inf</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    {% for sol in interesados%}
+                                        {%if sol.estado == 'rechazada' %}
+                                            <tr>
+                                                <td>
+                                                <img
+                                                    src="../static/img/user3-128x128.jpg"
+                                                    alt="Product 1"
+                                                    class="img-circle img-size-32 mr-2"
+                                                />
+                                                {{sol.arrendatario}}
+                                                </td>
+                                                <td>{{sol.inmueble}}</td>
+                                                <td>{{sol.estado}}</td>
+                                                <td>
+                                                {{sol.mensaje}}
+                                                </td>
+                                                <td>
+                                                <a href="#" class="text-muted">
+                                                    <i class="fas fa-search"></i>
+                                                </a>
+                                                </td>
+                                            </tr>
+                                        {%endif%}
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <div
+    class="modal fade"
+    id="exampleModal2"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+    >
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <form action="{% url 'cambio_estado' %}" method="post">
+            <!-- CSRF Token para seguridad -->
+            {% csrf_token %}
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Contactar</h5>
+            <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+            ></button>
+            </div>
+            <div class="modal-body">
+            <div class="mb-3">
+                <spam for="recipient-nam" class="col-form-label"
+                >Esta es la información que enviaremos al dueño de esta
+                publicación para que pueda contactarte.</spam
+                >
+            </div>
+            <div class="mb-3">
+                <spam for="recipient-name" class="col-form-label">
+                    Nombre: <b id="recipient-name"></b>
+                </spam>
+            </div>
+            <div class="mb-3">
+                <spam for="recipient-name" class="col-form-label">
+                    Email: <b id="recipient-correo"></b>
+                </spam>
+                <input id="" type="hidden" name="solicitud" value="" />
+            </div>
+            <div class="mb-3">
+                <label for="message-text" class="col-form-label">Mensaje:</label>
+                <textarea
+                class="form-control"
+                id="message-text"
+                name="mensaje"
+                placeholder="Hola, estoy interesado.."
+                disabled
+                ></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="inputState">Opción</label>
+                <select id="inputState" class="form-control" name="opciones">
+                <option value="aceptada" selected>Aceptar</option>
+                <option value="rechazada">Rechazar</option>
+                </select>
+            </div>
+            </div>
+            <div class="modal-footer">
+            <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+            >
+                Volver
+            </button>
+            <!-- <button type="submit" class="btn btn-danger" href="">Rechazar</button> -->
+            <button type="submit" class="btn btn-primary" href="">Aceptar</button>
+            </div>
+        </form>
+        </div>
+    </div>
+    </div>
+{% endblock %}
+
+{% block 'js' %}
+{{ block.super }}
+    <script>
+        $(document).ready(function() {
+            $("#exampleModal2").on("show.bs.modal", function (event) {
+
+                const button = $(event.relatedTarget); 
+
+                const id = button.data("id"); 
+                const mensaje = button.data("mensaje"); 
+                const nombre = button.data("nombre");
+                const email = button.data("email");
+
+                const modal = $(this);
+
+                modal.find(".modal-body input").val(id);
+                modal.find(".modal-body textarea").text(mensaje);
+                modal.find(".modal-body #recipient-name").text(nombre);
+                modal.find(".modal-body #recipient-correo").text(email)
+            });
+        });
+    </script>
+{% endblock %}

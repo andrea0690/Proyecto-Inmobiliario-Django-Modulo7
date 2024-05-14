@@ -104,11 +104,15 @@ def actualizar_campo_inmueble(inmueble_id, campo, valor):
         return f"Ocurrió un error al actualizar el campo: {e}"
     
 
-def borrar_inmueble(inmueble_id):
+def borrar_inmueble(user, inmueble_id):
     try:
-        Inmueble.objects.get(id=inmueble_id).delete()
-        print(f"El inmueble '{inmueble_id}' ha sido eliminado con éxito.")
-        return True
+        inmueble = Inmueble.objects.get(id=inmueble_id)
+
+        if user.is_superuser or inmueble.propietario.id == user.id:
+            inmueble.delete()
+            print(f"El inmueble '{inmueble_id}' ha sido eliminado con éxito.")
+            return True
+        return False
     except ObjectDoesNotExist:
         print(f"No se encontró un inmueble con ID: {inmueble_id}")
         return False

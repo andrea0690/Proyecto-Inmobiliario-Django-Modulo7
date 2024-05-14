@@ -13,7 +13,7 @@ class Comuna(models.Model):
     nombre = models.CharField(max_length=100)
     region = models.ForeignKey(Region, related_name='comunas', on_delete=models.CASCADE)
     def __str__(self):
-        return self.nombre
+        return f"{self.nombre},  {self.region}"
     
 class TipoInmueble(models.Model):
     tipo = models.CharField(max_length=100)
@@ -61,8 +61,17 @@ class Inmueble(models.Model):
 
 
 class SolicitudArriendo(models.Model):
+    ESTADO_SOLICITUD = [
+        ('pendiente', 'Pendiente'),
+        ('aceptada', 'Aceptada'),
+        ('rechazada', 'Rechazada'),
+    ]
     arrendatario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     inmueble = models.ForeignKey(Inmueble, on_delete=models.CASCADE)
     mensaje = models.TextField(blank=True)
+    fecha_creacion = models.DateTimeField(auto_now_add=True)
+    leido = models.BooleanField(default=False)
+    estado = models.CharField(max_length=20, choices=ESTADO_SOLICITUD, default=ESTADO_SOLICITUD[0][0])
+
     def __str__(self):
         return f"Solicitud de {self.inmueble.nombre} por {self.arrendatario.nombres} {self.arrendatario.apellidos}"    

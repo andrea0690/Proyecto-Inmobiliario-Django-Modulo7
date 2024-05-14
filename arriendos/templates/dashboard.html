@@ -1,0 +1,135 @@
+
+{% extends 'base.html' %} 
+{% block 'slider'%} {% endblock%} 
+{% block 'Contenido'%}
+    <div class="wrapper">
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <a href="#" class="brand-link">
+            <span class="brand-text font-weight-light">Panel de Control</span>
+        </a>
+
+        <div class="sidebar">
+            <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                <div class="info">
+                <a href="#" class="d-block">{{user.usuario}}</a>
+                </div>
+            </div>
+            <nav class="mt-2">
+                <ul
+                class="nav nav-pills nav-sidebar flex-column"
+                data-widget="treeview"
+                role="menu"
+                data-accordion="false"
+                >
+                <li class="nav-item">
+                    <a href="{% url 'dashboard' 0 %}" class="nav-link">
+                        <i class="nav-icon fas fa-th"></i>
+                        <p>
+                            Mis Inmuebles
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'actualizar_datos' %}" class="nav-link actualizar-datos-link">
+                        <i class="nav-icon fas fa-th"></i>
+                        <p>
+                            Mis datos
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'mis_solicitudes' %}" class="nav-link mis-solicitudes-link">
+                        <i class="nav-icon fas fa-th"></i>
+                        <p>
+                            Mis Solicitudes
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'crear_inmueble' %}" class="nav-link crear-inmueble-link">
+                        <i class="nav-icon fas fa-th"></i>
+                        <p>
+                            Crear Inmueble
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'logout' %}" class="nav-link">
+                        <i class="nav-icon fas fa-th"></i>
+                        <p>
+                            Cerrar Sesión
+                        </p>
+                    </a>
+                </li>
+                </ul>
+            </nav>
+        </div>
+    </aside>
+
+    <div class="content-wrapper" style="min-height: 1345.45px">
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div id="datos_container" class="col-md-12">
+                        <div class="container">
+                            <div class="row">
+                                <h2 class="p-2 text-center">Mis Inmuebles</h2>
+                                {% for inm in inmuebles %}
+                                    <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+                                        <div class="card bg-light d-flex flex-fill" style="width: auto; border-color: black;">
+                                            <a href="{% url 'actualizar_inmueble' inm.id %}">
+                                                <img  style="height: 12rem;" src="/media/{{inm.imagen}}" class="card-img-top" alt="...">
+                                            </a>
+                                            <div class="card-body">
+                                                <h5 class="card-title">{{inm.nombre}}</h5>
+                                                <p class="card-text">${{inm.precio}}</p>
+                                                <p class="card-text">Region: {{inm.comuna.region}}</p>
+                                                <p class="card-text">Comuna: {{inm.comuna}}</p>
+                                                <a href="{% url 'actualizar_inmueble' inm.id %}" class="btn btn-primary editar-inmueble-link" style="background-color: rgb(73, 176, 118); border-color: black;">Editar</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="sidebar-overlay"></div>
+    </div>
+{% endblock %}
+
+{% block 'js' %}
+    {{ block.super }}
+    <script>
+        $(document).ready(function() {
+
+            const estado = {{ estado|default:0 }};
+            if (estado === 1) {
+                url = $(".mis-solicitudes-link").attr('href')
+                llamar_a_view(url)
+            }
+
+            $('.actualizar-datos-link, .mis-solicitudes-link, .crear-inmueble-link, .editar-inmueble-link').on('click', function(event) {
+                event.preventDefault();
+                llamar_a_view($(this).attr('href'))
+            });
+
+            function llamar_a_view(url) {
+                fetch(url)
+                .then(response => response.text())
+                .then(data => {
+                    $('#datos_container').html(data);
+                })
+                .catch(error => console.error('Error:', error));
+            }
+        });
+    </script>
+{% endblock %}
+
+
+
+

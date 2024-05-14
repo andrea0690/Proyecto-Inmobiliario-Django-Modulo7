@@ -1,138 +1,337 @@
+{% load static%}
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bienvenido a Arrienda Facilito.cl</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@200..700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    <link rel="stylesheet" href="../static/styles.css" />
-</head>
 
-<body>
+    {% block 'css' %}
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@200..700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <link rel="stylesheet" href="{% static './styles.css' %}" />
 
+    <!-- Google Font: Source Sans Pro -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="{% static './plugins/fontawesome-free/css/all.min.css' %}"
+    />
+    <!-- Ionicons -->
+    <link
+      rel="stylesheet"
+      href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"
+    />
+    <!-- Tempusdominus Bootstrap 4 -->
+    <link
+      rel="stylesheet"
+      href="{% static './plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css' %}"
+    />
+
+    <!-- Theme style -->
+    <link rel="stylesheet" href="{% static './css/adminlte.min.css' %}" />
+    {% endblock %}
+  </head>
+
+  <body>
     <div class="container-fluid">
-        <div class="row">
-            {% block 'Header' %}
-                {% load static %}
-                <div class="text-center" style="background: rgba(237, 249, 106, 0.164);">
-                    <img style="max-height: 110px;" src="{% static './img/logo_arriendafacilito.png' %}">
-                </div>
-            {% endblock %}
-            
-            {% block 'Navbar' %}
-                <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                    <div class="container-fluid">
-                        <a class="navbar-brand" href={% url "index" %}>Arrienda Facilito.cl</a>
-                        <a class="navbar-brand" href="#">
-                            <img style="height: 30px;" src="{% static './img/logo_casita.png' %}" alt="logo">
-                        </a>
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                                <!-- <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href={% url "registrate" %}>Crea tu cuenta</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" aria-current="page" href={% url "login" %}>Ingresa</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" aria-current="page" href={% url "index" %}>Ayuda</a>
-                                </li> -->
-                            </ul>
-                            <!-- login -->
-                            <ul class="navbar-nav ml-auto">
+      <div class="row">
+        {% if messages %}
+          <ul class="messages">
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %} 
 
-                                
-                                {% if user.is_authenticated %}
-                                    <li class="nav-item">
-                                        <a class="nav-link" aria-current="page" href=#>Bienvenido {{ user.username }}</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" aria-current="page" href={% url "logout" %}>Cerrar sesión</a>
-                                    </li>
-                                {% else %}
-                                    <li class="nav-item">
-                                        <a class="nav-link active" aria-current="page" href={% url "registrate" %}>Crea tu cuenta</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" aria-current="page" href={% url "login" %}>Ingresa</a>
-                                    </li>
-                                {% endif %}
+        {% block 'Header' %}
+          <div class="text-center" style="background: rgba(237, 249, 106, 0.164)">
+            <img
+              style="max-height: 110px"
+              src="{% static './img/logo_arriendafacilito.png' %}"
+            />
+          </div>
+        {% endblock %} 
+        
+        {% block 'Navbar' %}
+          <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+              <a class="navbar-brand" href='{% url "index" %}'>
+                Arrienda Facilito.cl
+                <img
+                  style="height: 30px"
+                  src="{% static './img/logo_casita.png' %}"
+                  alt="logo"
+                />
+              </a>
+              <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+              >
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  {% if user.is_authenticated %}
+                    <!-- Primer dropdown para "Mi cuenta" -->
+                    <li class="nav-item dropdown">
+                      <a class="nav-link" href="{% url 'dashboard' 0 %}">
+                        Panel de control
+                      </a>
+                    </li>
 
-                                <li class="nav-item">
-                                    <a class="nav-link" aria-current="page" href={% url "index" %}>Ayuda</a>
-                                </li>
-                            </ul>
+                    <!-- Segundo dropdown para "Notificaciones" -->
+                    <li class="nav-item dropdown">
+                      <a
+                        class="nav-link"
+                        data-bs-toggle="dropdown"
+                        href="#"
+                        role="button"
+                        aria-expanded="false"
+                      >
+                        <i class="far fa-bell"></i>
+                        <span class="badge badge-warning navbar-badge"
+                          >{{solicitudes}}</span
+                        >
+                      </a>
+                      <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
+                        <span class="dropdown-item dropdown-header"
+                          >{{solicitudes}} 
+                          {% if solicitudes > 1 %} 
+                            solicitudes 
+                          {% else %} 
+                            solicitud 
+                          {% endif %}
+                        </span>
+                        {% if solicitudes %}
+                          <div class="dropdown-divider"></div>
+                          <a href="{% url 'dashboard' 1 %}" class="dropdown-item">
+                            <i class="fas fa-envelope mr-2"></i> {{solicitudes}} 
+                            {% if solicitudes > 1 %}
+                              nuevos mensajes 
+                            {% else %} 
+                              nuevo mensaje 
+                            {% endif %}
+                            <span class="float-right text-muted text-sm">3 mins</span>
+                          </a>
+                        {% endif %}
+                        <div class="dropdown-divider"></div>
+                        <a
+                          href="{% url 'dashboard' 1 %}"
+                          class="dropdown-item dropdown-footer"
+                          >Ver todas las notificaciones</a
+                        >
+                      </div>
+                    </li>
+                  {% endif %}
+                </ul>
+                <!-- login -->
+                <ul class="navbar-nav ml-auto">
+                  <li class="nav-item">
+                    <a
+                      class="nav-link"
+                      data-widget="navbar-search"
+                      data-target="#navbar-search2"
+                      href="#"
+                      role="button"
+                    >
+                      <i class="fas fa-search"></i>
+                    </a>
+                    <div class="navbar-search-block" id="navbar-search2">
+                      <form
+                        action="{% url 'index' %}"
+                        class="form-inline"
+                        method="GET"
+                      >
+                        <div class="input-group input-group-sm">
+                          <input
+                            class="form-control form-control-navbar"
+                            name="text_a_buscar"
+                            type="search"
+                            placeholder="Nombre de Región o Comuna"
+                            aria-label="Search"
+                          />
+                          <div class="input-group-append">
+                            <button class="btn btn-navbar" type="submit">
+                              <i class="fas fa-search"></i>
+                            </button>
+                            <button
+                              class="btn btn-navbar"
+                              type="button"
+                              data-widget="navbar-search"
+                            >
+                              <i class="fas fa-times"></i>
+                            </button>
+                          </div>
                         </div>
+                      </form>
                     </div>
-                </nav>
-            {% endblock %}
+                  </li>
 
-            {% block 'slider'%}
-            	<!-- Slider -->
-                <div id="myCarousel" class="carousel slide d-none d-sm-block" data-bs-ride="carousel">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <div class="row">
-                                <div class="col-12">
-                                    <img src="{% static './img/slider/casa2.jpeg' %}" class="d-block w-100" alt="...">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="row">
-                                <div class="col-12">
-                                    <img src="{% static './img/slider/condo.jpeg' %}" class="d-block w-100" alt="...">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="row">
-                                <div class="col-12">
-                                    <img src="{% static './img/slider/casa.jpeg' %}" class="d-block w-100" alt="...">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Controles del carousel -->
-                    <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
+                  {% if user.is_authenticated %}
+                    <li class="nav-item">
+                      <a class="nav-link" aria-current="page" href="#"
+                        >Bienvenido {{ user.username }}</a
+                      >
+                    </li>
+                    <li class="nav-item">
+                      <a
+                        class="nav-link"
+                        aria-current="page"
+                        href='{% url "logout" %}'
+                        >Cerrar sesión</a
+                      >
+                    </li>
+                  {% else %}
+                    <li class="nav-item">
+                      <a
+                        class="nav-link active"
+                        aria-current="page"
+                        href='{% url "registrate" %}'
+                        >Crea tu cuenta</a
+                      >
+                    </li>
+                    <li class="nav-item">
+                      <a
+                        class="nav-link"
+                        aria-current="page"
+                        href='{% url "login" %}'
+                        >Ingresa</a
+                      >
+                    </li>
+                  {% endif %}
+
+                  <li class="nav-item">
+                    <a
+                      class="nav-link"
+                      aria-current="page"
+                      href='{% url "ayuda" %}'
+                      >Ayuda</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+        {% endblock %} 
+        
+        {% block 'slider'%}
+          <div
+            id="myCarousel"
+            class="carousel slide d-none d-sm-block"
+            data-bs-ride="carousel"
+          >
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div class="row">
+                  <div class="col-12">
+                    <img
+                      src="{% static './img/slider/casa2.jpeg' %}"
+                      class="d-block w-100"
+                      alt="..."
+                    />
+                  </div>
                 </div>
-            {% endblock%}
-
-            {% block 'Contenido' %}
-                <div style="background: rgb(255, 0, 217);"> Contenido</div>
-            {% endblock %}
-
-            {% block 'Footer' %}
-                <div class="text-center" style="background: rgb(218, 214, 218);"> Creado por Andrea Gutierrez para Desafio Latam - 2024</div>
-            {% endblock %}
-        </div>
+              </div>
+              <div class="carousel-item">
+                <div class="row">
+                  <div class="col-12">
+                    <img
+                      src="{% static './img/slider/condo.jpeg' %}"
+                      class="d-block w-100"
+                      alt="..."
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="row">
+                  <div class="col-12">
+                    <img
+                      src="{% static './img/slider/casa.jpeg' %}"
+                      class="d-block w-100"
+                      alt="..."
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Controles del carousel -->
+            <button
+              class="carousel-control-prev"
+              type="button"
+              data-bs-target="#myCarousel"
+              data-bs-slide="prev"
+            >
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button
+              class="carousel-control-next"
+              type="button"
+              data-bs-target="#myCarousel"
+              data-bs-slide="next"
+            >
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+        {% endblock%} 
+        
+        {% block 'Contenido' %}
+          <div style="background: rgb(255, 0, 217)">Contenido</div>
+        {% endblock %} 
+        
+        {% block 'Footer' %}
+          <div class="container">
+            <footer class="py-3 my-4">
+              <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                <li class="nav-item">
+                  <a href="{% url 'index' %}" class="nav-link px-2 text-muted"
+                    >Inicio
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href='{% url "ayuda" %}' class="nav-link px-2 text-muted"
+                    >Ayuda</a
+                  >
+                </li>
+              </ul>
+              <p class="text-center text-muted">© 2024 Arrienda Facilita.cl</p>
+            </footer>
+          </div>
+        {% endblock %}
+      </div>
     </div>
 
-    {% block 'bootstrap' %}
-	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js">
-        </script>
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <script src="../static/script.js"></script>
+    {% block 'js' %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{% static './plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static './js/adminlte.min.js' %}"></script>
+    <script src="{% static './script.js' %}"></script>
     {% endblock %}
-
-</body>
-
+  </body>
 </html>

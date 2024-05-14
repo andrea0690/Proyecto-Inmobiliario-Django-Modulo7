@@ -3,62 +3,24 @@
 {% block 'Contenido' %}
   <div class="container">
     <div class="row">
-      <div class="col-4 py-2"></div>
-      <div class="col-4 py-2 text-center">
+      <div class="p-2 text-center">
         <h2>Registrate</h2>
         <form method="post">
           {% csrf_token %}
-          <div class="form-group py-2">
-            {{form.username.label_tag}}
-            {{form.username}}
-            <div class="text-danger">{{form.username.errors}}</div>
-          </div>
-          <div class="form-group py-2">
-            {{form.nombres.label_tag}}
-            {{form.nombres}}
-            <div class="text-danger">{{form.nombres.errors}}</div>
-          </div>
-          <div class="form-group py-2">
-            {{form.apellidos.label_tag}}
-            {{form.apellidos}}
-            <div class="text-danger">{{form.apellidos.errors}}</div>
-          </div>
-          <div class="form-group py-2">
-            {{form.rut.label_tag}}
-            {{form.rut}}
-            <div class="text-danger">{{form.rut.errors}}</div>
-          </div>
-          <div class="form-group py-2">
-            {{form.direccion.label_tag}}
-            {{form.direccion}}
-            <div class="text-danger">{{form.direccion.errors}}</div>
-          </div>
-          <div class="form-group py-2">
-            {{form.telefono.label_tag}}
-            {{form.telefono}}
-            <div class="text-danger">{{form.telefono.errors}}</div>
-          </div>
-          <div class="form-group py-2">
-            {{form.tipo_usuario.label_tag}}
-            {{form.tipo_usuario}}
-            <div class="text-danger">{{form.tipo_usuario.errors}}</div>
-          </div>
-          <div class="form-group py-2">
-            {{form.correo_electronico.label_tag}}
-            {{form.correo_electronico}}
-            <div class="text-danger">{{form.correo_electronico.errors}}</div>
-          </div>
-          <div class="form-group py-2">
-            {{form.password.label_tag}}
-            {{form.password}}
-            <div class="text-danger">{{form.password.errors}}</div>
-          </div>
-          <button type="submit" class="btn btn-primary">Ingresar</button>
+          {% for field in form %}
+            <div class="form-group row">
+              <label class="col-sm-2 col-form-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+              <div class="col-sm-10">
+                {{ field }}
+                {% for error in field.errors %}
+                  <div class="text-danger">{{ error }}</div>
+                {% endfor %}
+              </div>
+            </div>
+          {% endfor %}
+          <button type="submit" class="btn btn-primary">Enviar</button>
         </form>
       </div>
-      <div class="col-4 py-2"></div>
-
-
   </div>
 
   </div>
