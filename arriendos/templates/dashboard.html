@@ -2,7 +2,7 @@
 {% extends 'base.html' %} 
 {% block 'slider'%} {% endblock%} 
 {% block 'Contenido'%}
-    <div class="wrapper">
+<div class="wrapper">
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <a href="#" class="brand-link">
             <span class="brand-text font-weight-light">Panel de Control</span>
@@ -11,7 +11,7 @@
         <div class="sidebar">
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                 <div class="info">
-                <a href="#" class="d-block">{{user.usuario}}</a>
+                <a href="#" class="d-block">{{user.usuario}} - {{user.usuario.tipo_usuario}}</a>
                 </div>
             </div>
             <nav class="mt-2">
@@ -95,9 +95,9 @@
                                                     <a href="{% url 'actualizar_inmueble' inm.id %}" class="btn btn-primary editar-inmueble-link" style="background-color: rgb(83, 139, 187); border-color: black;">Editar</a>
                                                     {% if user.is_superuser or user.id == inm.propietario.id%}
                                                     <a
-                                                      href="{% url 'eliminar_inmueble' inm.id %}"
-                                                      class="btn btn-danger"
-                                                      >Eliminar</a
+                                                    href="{% url 'eliminar_inmueble' inm.id %}"
+                                                    class="btn btn-danger"
+                                                    >Eliminar</a
                                                     >
                                                     {% endif %}
                                                 </div>
@@ -115,7 +115,7 @@
     </div>
 
     <div id="sidebar-overlay"></div>
-    </div>
+</div>
 {% endblock %}
 
 {% block 'js' %}
@@ -125,14 +125,18 @@
 
             const estado = {{ estado|default:0 }};
             const tipo_usuario = "{{ user.usuario.tipo_usuario }}";
-            if (estado === 1 || tipo_usuario === "arrendatario") {
-                url = $(".mis-solicitudes-link").attr('href')
+            if (estado === 1) {
+                const url = $(".mis-solicitudes-link").attr('href')
+                llamar_a_view(url)
+            } else if (tipo_usuario === "arrendatario"){
+                const url = $(".actualizar-datos-link").attr('href')
                 llamar_a_view(url)
             }
 
             $('.actualizar-datos-link, .mis-solicitudes-link, .crear-inmueble-link, .editar-inmueble-link').on('click', function(event) {
                 event.preventDefault();
-                llamar_a_view($(this).attr('href'))
+                const url = $(this).attr('href')
+                llamar_a_view(url)
             });
 
             function llamar_a_view(url) {

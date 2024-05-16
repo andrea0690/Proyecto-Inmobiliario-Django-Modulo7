@@ -112,7 +112,7 @@ def actualizar_datos(request):
 
             user.save()
             login(request, user)
-            return redirect('index')
+            return redirect('dashboard',estado=0)
     else:
         form = RegistroUsuarioForm(instance=u)
 

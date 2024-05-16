@@ -9,7 +9,7 @@
         <div class="card-body">
         <h4 class="text-primary">
             {% if is_arrendador %}
-                Solicitudes Recibidas {{estado}}
+                Solicitudes Recibidas
             {%else%}
                 Solicitudes Realizadas
             {%endif%}
@@ -314,24 +314,27 @@
                 disabled
                 ></textarea>
             </div>
-            <div class="mb-3">
-                <label for="inputState">Opción</label>
-                <select id="inputState" class="form-control" name="opciones">
-                <option value="aceptada" selected>Aceptar</option>
-                <option value="rechazada">Rechazar</option>
-                </select>
-            </div>
+            {%if is_arrendador%}
+                <div class="mb-3">
+                    <label for="inputState">Opción</label>
+                    <select id="inputState" class="form-control" name="opciones">
+                    <option value="aceptada" selected>Aceptar</option>
+                    <option value="rechazada">Rechazar</option>
+                    </select>
+                </div>
+            {%endif%}
             </div>
             <div class="modal-footer">
             <button
                 type="button"
-                class="btn btn-secondary"
+                class="btn btn-primary"
                 data-bs-dismiss="modal"
             >
                 Volver
             </button>
-            <!-- <button type="submit" class="btn btn-danger" href="">Rechazar</button> -->
-            <button type="submit" class="btn btn-primary" href="">Aceptar</button>
+            {%if is_arrendador%}
+                <button type="submit" class="btn btn-primary" href="">Aceptar</button>
+            {%endif%}
             </div>
         </form>
         </div>
