@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 import os
 from dotenv import load_dotenv
+import dj_database_url
 
 load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -88,15 +89,23 @@ WSGI_APPLICATION = 'portal.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': os.getenv('ENGINE'),
+#         'NAME': os.getenv('NAME'),
+#         'USER': os.getenv('USERDB'),
+#         'PASSWORD': os.getenv('PASSWORD'),
+#         'HOST': os.getenv('HOSTDB'),
+#         'PORT': os.getenv('PORT'),
+#     }
+# }
+
 DATABASES = {
-    'default': {
-        'ENGINE': os.getenv('ENGINE'),
-        'NAME': os.getenv('NAME'),
-        'USER': os.getenv('USERDB'),
-        'PASSWORD': os.getenv('PASSWORD'),
-        'HOST': os.getenv('HOSTDB'),
-        'PORT': os.getenv('PORT'),
-    }
+    'default': dj_database_url.config(
+        # Replace this value with your local database's connection string.
+        default='postgres://arrienda_facilito_user:aLV384EuTrW5XRwATiikX3eezDyGNbCO@dpg-cp3mq37sc6pc73fs46tg-a/arrienda_facilito',
+        conn_max_age=600
+    )
 }
 
 
