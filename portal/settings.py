@@ -89,24 +89,24 @@ WSGI_APPLICATION = 'portal.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': os.getenv('ENGINE'),
-#         'NAME': os.getenv('NAME'),
-#         'USER': os.getenv('USERDB'),
-#         'PASSWORD': os.getenv('PASSWORD'),
-#         'HOST': os.getenv('HOSTDB'),
-#         'PORT': os.getenv('PORT'),
-#     }
-# }
-
 DATABASES = {
-    'default': dj_database_url.config(
-        # Replace this value with your local database's connection string.
-        default=os.getenv('URL_DB'),
-        conn_max_age=600
-    )
+    'default': {
+        'ENGINE': os.getenv('ENGINE'),
+        'NAME': os.getenv('NAME'),
+        'USER': os.getenv('USERDB'),
+        'PASSWORD': os.getenv('PASSWORD'),
+        'HOST': os.getenv('HOSTDB'),
+        'PORT': os.getenv('PORT'),
+    }
 }
+
+# DATABASES = {
+#     'default': dj_database_url.config(
+#         # Replace this value with your local database's connection string.
+#         default=os.getenv('URL_DB'),
+#         conn_max_age=600
+#     )
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
