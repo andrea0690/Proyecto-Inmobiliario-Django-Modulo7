@@ -151,5 +151,5 @@ STATICFILES_DIRS = (
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-CSRF_TRUSTED_ORIGINS = ['https://proyecto-django-onlyflans.onrender.com']
+CSRF_TRUSTED_ORIGINS = ['https://proyecto-inmobiliario-django-modulo7.onrender.com']
 ALLOWED_HOSTS = ['*']
