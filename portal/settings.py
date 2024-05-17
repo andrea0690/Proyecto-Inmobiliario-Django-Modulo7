@@ -28,7 +28,14 @@ SECRET_KEY = 'django-insecure-=kmv*kar1as1o*u4i@gqwny_f-hkaaa9#1@qqt$@i#ybdb=w-k
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+
+
+#CSRF_TRUSTED_ORIGINS = [mi url]
+
+
+
+
+
 
 
 # Application definition
@@ -142,3 +149,7 @@ STATICFILES_DIRS = (
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+CSRF_TRUSTED_ORIGINS = ['https://proyecto-django-onlyflans.onrender.com']
+ALLOWED_HOSTS = ['*']
