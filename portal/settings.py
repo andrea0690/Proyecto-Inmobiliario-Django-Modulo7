@@ -103,11 +103,10 @@ WSGI_APPLICATION = 'portal.wsgi.application'
 DATABASES = {
     'default': dj_database_url.config(
         # Replace this value with your local database's connection string.
-        default='postgres://arrienda_facilito_user:aLV384EuTrW5XRwATiikX3eezDyGNbCO@dpg-cp3mq37sc6pc73fs46tg-a.oregon-postgres.render.com/arrienda_facilito',
+        default=os.getenv('URL_DB'),
         conn_max_age=600
     )
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
